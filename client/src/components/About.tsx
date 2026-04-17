@@ -58,12 +58,12 @@ export default function About() {
               </h3>
               {resumeData.education.map((edu, index) => (
                 <div key={index} className="border-l-2 border-cyan-400 pl-4">
-                  <div className="flex items-start justify-between">
+                  <div className="flex items-center justify-between gap-4">
                     <div>
                       <p className="text-white font-semibold">{edu.school}</p>
                       <p className="text-cyan-400 text-sm">{edu.degree}</p>
                     </div>
-                    <span className="text-gray-500 text-sm">{edu.duration}</span>
+                    <span className="text-cyan-300/90 text-sm font-medium whitespace-nowrap">{edu.duration}</span>
                   </div>
                 </div>
               ))}
