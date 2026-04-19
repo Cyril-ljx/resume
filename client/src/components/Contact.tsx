@@ -3,7 +3,6 @@ import {
   Mail,
   Phone,
   Github,
-  Linkedin,
   MessageCircle,
   ArrowUp,
 } from "lucide-react";
@@ -32,7 +31,6 @@ export default function Contact() {
       value: "Cyril-ljx",
       href: "https://github.com/Cyril-ljx",
     },
-
     {
       icon: <MessageCircle className="w-8 h-8" />,
       label: "微信",
@@ -66,7 +64,11 @@ export default function Contact() {
               key={index}
               href={contact.href}
               target={contact.href.startsWith("http") ? "_blank" : undefined}
-              rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              rel={
+                contact.href.startsWith("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
               className="group p-6 rounded-lg bg-slate-900/50 border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 animate-fadeInUp"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
@@ -85,7 +87,7 @@ export default function Contact() {
             感谢您浏览我的简历网页，期待与您交流！
           </p>
           <p className="text-gray-500 text-sm">
-            © 2025 {resumeData.name}. All rights reserved.
+            © {new Date().getFullYear()} {resumeData.name}. All rights reserved.
           </p>
         </div>
       </div>
@@ -94,6 +96,7 @@ export default function Contact() {
       <button
         onClick={scrollToTop}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer hover:text-cyan-400 transition-colors"
+        aria-label="返回顶部"
       >
         <ArrowUp className="w-8 h-8 text-cyan-400" />
       </button>

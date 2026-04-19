@@ -110,8 +110,6 @@ export const resumeData = {
             "接入 SQLite Checkpointer 实现跨会话长期记忆，支持对生成报告的多轮追问；运用 interrupt/resume 完成高风险节点的 HITL 审批断点恢复。",
         },
       ],
-      achievement:
-        "输出包含「5 Whys × 4M1E」归因的 11 章节结构化报告。",
       tags: [
         "LangGraph",
         "ReAct",
