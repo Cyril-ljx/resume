@@ -43,15 +43,62 @@ export default function Projects() {
                     {project.role}
                   </p>
                 </div>
-                <span className="text-gray-400 text-sm whitespace-nowrap">
+                <span className="text-cyan-300/90 text-sm font-medium whitespace-nowrap">
                   {project.duration}
                 </span>
               </div>
 
-              {/* Description */}
-              <p className="text-gray-300 mb-4 leading-relaxed">
-                {project.description}
-              </p>
+              {/* Project Background (if provided) */}
+              {project.background && (
+                <p className="text-gray-300 mb-4 leading-relaxed">
+                  <span className="text-cyan-400 font-semibold">
+                    项目背景：
+                  </span>
+                  {project.background}
+                </p>
+              )}
+
+              {/* Plain description (fallback for old projects without structured fields) */}
+              {project.description && !project.background && (
+                <p className="text-gray-300 mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+              )}
+
+              {/* Structured Responsibilities */}
+              {project.responsibilities &&
+                project.responsibilities.length > 0 && (
+                  <div className="mb-4">
+                    <p className="text-cyan-400 font-semibold mb-3">
+                      个人职责与技术实现：
+                    </p>
+                    <div className="space-y-3">
+                      {project.responsibilities.map((resp, i) => (
+                        <div
+                          key={i}
+                          className="border-l-2 border-cyan-400/50 pl-4"
+                        >
+                          <p className="text-white font-medium mb-1">
+                            {resp.title}
+                          </p>
+                          <p className="text-gray-300 text-sm leading-relaxed">
+                            {resp.detail}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+              {/* Achievement */}
+              {project.achievement && (
+                <p className="text-gray-300 mb-4 leading-relaxed">
+                  <span className="text-cyan-400 font-semibold">
+                    项目成果：
+                  </span>
+                  {project.achievement}
+                </p>
+              )}
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2">
@@ -73,6 +120,7 @@ export default function Projects() {
       <button
         onClick={scrollToNext}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer hover:text-cyan-400 transition-colors"
+        aria-label="滚动到下一节"
       >
         <ChevronDown className="w-8 h-8 text-cyan-400" />
       </button>
